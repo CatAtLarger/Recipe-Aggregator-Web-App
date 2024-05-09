@@ -10,7 +10,8 @@ export class Recipe {
     private cool_minutes : number;
     private ingredients: Ingredient[];
     private author: string;
-    private instructions: string;
+    //instructions should be seperated so they are iterable. we can determine complexity from amount of instructions
+    private instructions: string[];
 
 
     constructor(
@@ -22,7 +23,7 @@ export class Recipe {
         cool_minutes: number,
         ingredients: Ingredient[],
         author: string,
-        instructions: string
+        instructions: string[]
     ) {
         this.category = category;
         this.name = name;
@@ -33,6 +34,10 @@ export class Recipe {
         this.ingredients = ingredients;
         this.author = author;
         this.instructions = instructions;
+    }
+
+    getIngredientCount(): number {
+        return this.ingredients.length;
     }
 
     getCategory(): string {
@@ -67,7 +72,7 @@ export class Recipe {
         return this.author;
     }
 
-    getInstructions(): string {
+    getInstructions(): string[] {
         return this.instructions;
     }
     getCalories(): number {
@@ -78,13 +83,6 @@ export class Recipe {
         return total_calories;
     }
 
-    getWeightGrams(): number {
-        let total_Weight_grams = 0;
-        for (const ingredient of this.ingredients) {
-            total_Weight_grams += ingredient.getWeightGrams();
-        }
-        return total_Weight_grams;
-    }
 
     getProteinGrams(): number {
         let total_protein_grams = 0;
@@ -153,6 +151,9 @@ export class Recipe {
     }
     getTotalFatGrams():number{
         return this.getTransFatGrams() + this.getSodiumMilligrams();
+    }
+    hasAuthor():boolean{
+        return this.author != null;
     }
 }
 

@@ -1,13 +1,12 @@
 export class Ingredient {
 
     private name: string;
-    private  weight_grams: number;
     private  calories: number;
     private  saturated_fat_grams: number;
     private  trans_fat_grams: number;
     private  cholesterol_milligrams: number;
     private  sodium_milligrams: number;
-                   private  fiber_grams: number;
+    private  fiber_grams: number;
                    private  total_sugars_grams: number;
                    private  added_sugar_grams: number;
                    private  protein_grams: number;
@@ -15,7 +14,6 @@ export class Ingredient {
 
 
     constructor(
-        weight_grams: number,
         calories: number,
         saturated_fat_grams: number,
         trans_fat_games: number,
@@ -27,7 +25,6 @@ export class Ingredient {
         protein_grams: number,
         ingredients: Ingredient[] = []
     ) {
-        this.weight_grams = weight_grams;
         this.calories = calories;
         this.saturated_fat_grams = saturated_fat_grams;
         this.trans_fat_grams = trans_fat_games;
@@ -50,9 +47,6 @@ export class Ingredient {
 
     hasIngredients():boolean{
         return this.ingredients.length != null;
-    }
-    getWeightGrams(): number {
-        return this.weight_grams;
     }
 
     getCalories(): number {
